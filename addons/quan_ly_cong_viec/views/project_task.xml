@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <!-- =========================
+         TREE VIEW
+    ========================== -->
+    <record id="view_project_task_tree" model="ir.ui.view">
+      <field name="name">project_task.tree</field>
+      <field name="model">project_task</field>
+      <field name="arch" type="xml">
+        <tree string="Danh sách công việc">
+          <field name="project_task_id"/>
+          <field name="name"/>
+          <field name="customer_id"/>
+          <field name="nhan_vien_id"/>
+          <field name="state"/>
+          <field name="deadline"/>
+          <field name="is_overdue"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- =========================
+         FORM VIEW
+    ========================== -->
+    <record id="view_project_task_form" model="ir.ui.view">
+      <field name="name">project_task.form</field>
+      <field name="model">project_task</field>
+      <field name="arch" type="xml">
+        <form string="Công việc">
+          <header>
+            <button name="action_start" type="object" string="Bắt đầu"
+                    states="todo" class="btn-primary"/>
+            <button name="action_done" type="object" string="Hoàn thành"
+                    states="todo,doing" class="btn-success"/>
+            <button name="action_cancel" type="object" string="Hủy"
+                    states="todo,doing" class="btn-secondary"/>
+
+            <field name="state" widget="statusbar"
+                   statusbar_visible="todo,doing,done,cancel"/>
+          </header>
+
+          <sheet>
+            <group>
+              <group>
+                <field name="project_task_id" readonly="1"/>
+                <field name="name"/>
+                <field name="customer_id"/>
+                <field name="nhan_vien_id"/>
+              </group>
+              <group>
+                <field name="deadline"/>
+                <field name="actual_completion_date" readonly="1"/>
+                <field name="is_overdue" readonly="1"/>
+              </group>
+            </group>
+
+            <notebook>
+              <page string="Mô tả">
+                <field name="description"/>
+              </page>
+
+              <!-- Tab này chỉ hoạt động khi model _inherit mail.thread + mail.activity.mixin -->
+              <page string="Trao đổi">
+                <field name="message_follower_ids" widget="mail_followers"/>
+                <field name="activity_ids" widget="mail_activity"/>
+                <field name="message_ids" widget="mail_thread"/>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- =========================
+         SEARCH VIEW (QUAN TRỌNG - FIX LỖI JS)
+    ========================== -->
+    <record id="view_project_task_search" model="ir.ui.view">
+      <field name="name">project_task.search</field>
+      <field name="model">project_task</field>
+      <field name="arch" type="xml">
+        <search string="Tìm công việc">
+          <field name="project_task_id" string="Mã công việc"/>
+          <field name="name" string="Tên công việc"/>
+          <field name="customer_id"/>
+          <field name="nhan_vien_id"/>
+          <field name="state"/>
+          <field name="deadline"/>
+
+          <separator/>
+
+          <filter name="filter_todo" string="Cần làm"
+                  domain="[('state','=','todo')]"/>
+          <filter name="filter_doing" string="Đang làm"
+                  domain="[('state','=','doing')]"/>
+          <filter name="filter_done" string="Hoàn thành"
+                  domain="[('state','=','done')]"/>
+          <filter name="filter_cancel" string="Đã hủy"
+                  domain="[('state','=','cancel')]"/>
+
+          <separator/>
+
+          <filter name="filter_overdue" string="Quá hạn"
+                  domain="[('is_overdue','=',True)]"/>
+
+          <group expand="0" string="Nhóm theo">
+            <filter name="group_state" string="Trạng thái"
+                    context="{'group_by':'state'}"/>
+            <filter name="group_employee" string="Nhân viên"
+                    context="{'group_by':'nhan_vien_id'}"/>
+            <filter name="group_customer" string="Khách hàng"
+                    context="{'group_by':'customer_id'}"/>
+            <filter name="group_deadline" string="Deadline"
+                    context="{'group_by':'deadline'}"/>
+          </group>
+        </search>
+      </field>
+    </record>
+
+    <!-- =========================
+         ACTION
+    ========================== -->
+    <record id="action_project_task" model="ir.actions.act_window">
+      <field name="name">Công việc</field>
+      <field name="res_model">project_task</field>
+      <field name="view_mode">tree,form</field>
+      <!-- Gán search view để không bị pick nhầm search view lỗi trong DB -->
+      <field name="search_view_id" ref="view_project_task_search"/>
+      <!-- Optional: mở tree mặc định -->
+      <field name="view_id" ref="view_project_task_tree"/>
+    </record>
+
+  </data>
+</odoo>

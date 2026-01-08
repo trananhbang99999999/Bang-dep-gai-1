@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <!-- APP ROOT (hiện như 1 ứng dụng ở sidebar) -->
+    <menuitem id="menu_root"
+              name="QLCV"
+              sequence="30"
+              web_icon="ten_module,static/description/icon.png"/>
+
+    <!-- Nhóm menu -->
+    <menuitem id="menu_danh_muc_chung"
+              name="Danh mục chung"
+              parent="menu_root"
+              sequence="1"/>
+
+    <!-- Action mở danh sách công việc (đúng xml_id action bạn đã tạo) -->
+    <menuitem id="menu_cong_viec"
+              name="Công việc"
+              parent="menu_danh_muc_chung"
+              action="action_project_task"
+              sequence="10"/>
+
+  </data>
+</odoo>

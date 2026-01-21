@@ -1,155 +1,220 @@
-# 🚀 Hướng dẫn cài đặt Odoo - FitDNU
+<h2 align="center">
+    <a href="https://dainam.edu.vn/vi/khoa-cong-nghe-thong-tin">
+    🎓 Faculty of Information Technology (DaiNam University)
+    </a>
+</h2>
+<h2 align="center">
+    Hệ Thống Quản Lý Nhân Sự, Công Việc và Khách Hàng<br/>
+    <small>Human Resources, Work Management & Customer Relationship System</small>
+</h2>
+<div align="center">
+    <p align="center">
+        <img src="images/aiotlab_logo.png" alt="AIoTLab Logo" width="170"/>
+        <img src="images/fitdnu_logo.png" alt="AIoTLab Logo" width="180"/>
+        <img src="images/dnu_logo.png" alt="DaiNam University Logo" width="200"/>
+    </p>
 
+[![Odoo](https://img.shields.io/badge/Odoo-6C3696?style=for-the-badge&logo=odoo&logoColor=white)](https://www.odoo.com/)
+[![Faculty of Information Technology](https://img.shields.io/badge/Faculty%20of%20Information%20Technology-blue?style=for-the-badge)](https://dainam.edu.vn/vi/khoa-cong-nghe-thong-tin)
+[![DaiNam University](https://img.shields.io/badge/DaiNam%20University-orange?style=for-the-badge)](https://dainam.edu.vn)
+
+</div>
+ 
+## 📖 1. Giới thiệu
+Hệ thống Quản lý Nhân Sự, Công Việc và Khách Hàng được xây dựng dựa trên nền tảng **Odoo**, nhằm hỗ trợ các doanh nghiệp trong việc quản lý toàn diện về nhân sự, quy trình công việc và mối quan hệ khách hàng. Hệ thống cung cấp các tính năng:
+
+- **Quản lý Nhân Sự (HR)**: Quản lý thông tin nhân viên, hợp đồng lao động, phòng ban, chức vụ, kỹ năng và phát triển nhân sự
+- **Quản lý Công Việc (Projects)**: Lên kế hoạch, phân công công việc, theo dõi tiến độ, quản lý nhiệm vụ và báo cáo hiệu suất
+- **Quản lý Khách Hàng (CRM)**: Quản lý danh bạ khách hàng, cơ hội kinh doanh, bán hàng, tương tác khách hàng và phân tích dữ liệu
+
+Thay vì sử dụng các tệp Excel rời rạc hay hệ thống thủ công, giải pháp này mang lại một nền tảng tập trung, hiện đại, tự động hóa và dễ sử dụng cho toàn bộ quy trình quản lý doanh nghiệp.
+
+## 🔧 2. Các công nghệ được sử dụng
+<div align="center">
+
+### Nền Tảng Chính
+[![Odoo](https://img.shields.io/badge/Odoo%2017-6C3696?style=for-the-badge&logo=odoo&logoColor=white)](https://www.odoo.com/)
+[![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+
+### Công nghệ Backend
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+[![XML](https://img.shields.io/badge/XML-FF6B6B?style=for-the-badge&logo=xml&logoColor=white)](#)
+
+### Công nghệ Frontend
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](#)
+[![CSS](https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white)](#)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](#)
+
+### Hệ điều hành
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
 ![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
-![GitLab](https://img.shields.io/badge/gitlab-%23181717.svg?style=for-the-badge&logo=gitlab&logoColor=white)
-![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
-![Python](https://img.shields.io/badge/python-v3.8+-blue.svg)
-[![security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
+![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
 
----
+### Công cụ & Deployment
+[![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
+[![Docker Compose](https://img.shields.io/badge/Docker%20Compose-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://docs.docker.com/compose/)
+[![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)](https://git-scm.com/)
+</div>
 
-## 📋 Mục lục
+## 🚀 3. Các tính năng chính
 
-1. [Cài đặt công cụ và môi trường](#1-cài-đặt-công-cụ-và-môi-trường)
-2. [Cấu hình cơ sở dữ liệu](#2-cấu-hình-cơ-sở-dữ-liệu)
-3. [Thiết lập tham số hệ thống](#3-thiết-lập-tham-số-hệ-thống)
-4. [Khởi chạy ứng dụng](#4-khởi-chạy-ứng-dụng)
+### ✨ Quản lý Nhân Sự (HR Module)
+- 👥 Quản lý thông tin nhân viên chi tiết (thông tin cá nhân, liên lạc, hợp đồng)
+- 🏢 Tổ chức cấu trúc công ty (phòng ban, chức vụ, quản lý cấp bậc)
+- 📋 Quản lý hợp đồng lao động, tuyển dụng và onboarding nhân viên
+- 🎓 Quản lý kỹ năng, đào tạo, phát triển nhân sự và sự nghiệp
+- 📊 Biểu đồ tổ chức, sơ đồ cấu trúc công ty và quản lý cấp độ quản lý
+- 🏅 Quản lý hiệu suất, đánh giá kỹ năng và phát triển năng lực
+- �‍👩‍👧‍👦 Quản lý thông tin gia đình, người phụ thuộc và sức khỏe
 
----
+### 💼 Quản lý Công Việc (Projects Module)
+- � Tạo và quản lý dự án theo phương pháp agile hoặc waterfall
+- 📅 Lập kế hoạch dự án, phân công nhiệm vụ cho nhân viên
+- 🎯 Theo dõi tiến độ công việc, thời hạn hoàn thành
+- � Phân công tài nguyên, quản lý thành viên dự án
+- ⏱️ Ghi nhận thời gian làm việc, báo cáo chi phí dự án
+- � Kiểm soát chất lượng, quản lý rủi ro và vấn đề dự án
+- 📈 Báo cáo tiến độ, phân tích năng suất và hiệu quả dự án
+- � Theo dõi các mục tiêu, cột mốc và giai đoạn dự án
 
-## 1. 🔧 Cài đặt công cụ và môi trường
+### 👥 Quản lý Khách Hàng (CRM Module)
+- 💼 Quản lý danh bạ khách hàng (công ty, liên hệ cá nhân)
+- � Lưu trữ thông tin liên lạc, lịch sử tương tác khách hàng
+- 🎯 Quản lý cơ hội kinh doanh, bán hàng và quy trình bán hàng
+- � Quản lý email, cuộc gọi, cuộc họp và sự kiện khách hàng
+- � Phân loại khách hàng, phân tích tiềm năng và giá trị
+- 📈 Báo cáo doanh số, phân tích xu hướng bán hàng
+- 🎁 Quản lý khuyến mãi, chiến dịch bán hàng và chương trình khách hàng trung thành
+- � Quản lý hoạt động, nhiệm vụ liên quan đến khách hàng
+- 🔔 Thông báo, nhắc nhở và tự động hóa quy trình CRM
 
-### 1.1. Clone dự án
+### 📊 Báo Cáo & Phân Tích
+- 📈 Báo cáo chi tiết về nhân sự, chấm công, lương
+- 📉 Phân tích xu hướng, thống kê, dự báo
+- 🎯 Bảng điều khiển (Dashboard) tổng hợp thông tin chính
+- 📄 Xuất báo cáo sang Excel, PDF
 
+## ⚙️ 4. Cài đặt và Chạy Hệ Thống
+
+### 4.1. Yêu cầu hệ thống
+
+- **Python 3.10+** 
+- **PostgreSQL 12+**
+- **Docker & Docker Compose** (khuyến nghị)
+- **Git**
+- **Ít nhất 4GB RAM**, 10GB dung lượng ổ cứng
+
+### 4.2. Cài đặt sử dụng Docker (Khuyến nghị)
+
+**Bước 1**: Clone project
 ```bash
-git clone https://gitlab.com/anhlta/odoo-fitdnu.git
+git clone https://github.com/your-repo/odoo-fitdnu.git
 cd odoo-fitdnu
-git checkout <branch_name>
 ```
 
-### 1.2. Cài đặt các thư viện hệ thống
-
-Thực thi lệnh sau để cài đặt các dependencies cần thiết:
-
+**Bước 2**: Tạo file environment
 ```bash
-sudo apt-get install -y \
-    libxml2-dev \
-    libxslt-dev \
-    libldap2-dev \
-    libsasl2-dev \
-    libssl-dev \
-    python3.10-distutils \
-    python3.10-dev \
-    python3.10-venv \
-    build-essential \
-    libffi-dev \
-    zlib1g-dev \
-    libpq-dev
+cp .env.example .env
 ```
 
-### 1.3. Khởi tạo môi trường ảo Python
-
-Tạo và kích hoạt môi trường ảo:
-
-```bash
-# Tạo môi trường ảo
-python3.10 -m venv ./venv
-
-# Kích hoạt môi trường ảo
-source venv/bin/activate
-
-# Cài đặt các thư viện Python
-pip3 install -r requirements.txt
-```
-
-> **💡 Lưu ý:** Đảm bảo rằng môi trường ảo đã được kích hoạt trước khi cài đặt requirements.
-
----
-
-## 2. 🗄️ Cấu hình cơ sở dữ liệu
-
-Khởi tạo PostgreSQL database bằng Docker Compose:
-
+**Bước 3**: Khởi động hệ thống với Docker Compose
 ```bash
 docker-compose up -d
 ```
 
-Lệnh này sẽ khởi động PostgreSQL container trong chế độ detached mode.
+**Bước 4**: Truy cập Odoo
+- Mở trình duyệt: `http://localhost:8069`
 
----
 
-## 3. ⚙️ Thiết lập tham số hệ thống
+### 4.3. Cài đặt trên máy chủ Linux (Ubuntu/Debian)
 
-### 3.1. Tạo file cấu hình `odoo.conf`
-
-Tạo file **odoo.conf** tại thư mục gốc của dự án với nội dung:
-
-```ini
-[options]
-addons_path = addons
-db_host = localhost
-db_password = odoo
-db_user = odoo
-db_port = 5432
-xmlrpc_port = 8069
-```
-
-> **💡 Gợi ý:** Bạn có thể sao chép từ file mẫu:
-> ```bash
-> cp odoo.conf.template odoo.conf
-> ```
-
-### 3.2. Các tham số tùy chọn
-
-Bạn có thể bổ sung thêm các tham số sau khi khởi chạy Odoo:
-
-| Tham số | Mô tả |
-|---------|-------|
-| `-c <đường_dẫn>` | Chỉ định đường dẫn đến file cấu hình |
-| `-u <tên_addons>` | Cập nhật addons trước khi khởi chạy |
-| `-d <tên_database>` | Chỉ định database sử dụng |
-| `--dev=all` | Bật chế độ developer mode |
-
-**Ví dụ:**
-
+**Bước 1**: Cập nhật hệ thống
 ```bash
-./odoo-bin -c odoo.conf -d odoo_db -u base --dev=all
+sudo apt update && sudo apt upgrade -y
 ```
 
----
+**Bước 2**: Cài đặt các gói phụ thuộc
+```bash
+sudo apt install -y python3 python3-pip python3-dev postgresql postgresql-contrib \
+    git libxml2-dev libxslt1-dev libzip-dev libsasl2-dev libssl-dev libffi-dev \
+    libjpeg-dev zlib1g-dev
+```
 
-## 4. 🎯 Khởi chạy ứng dụng
+**Bước 3**: Clone project
+```bash
+cd /opt
+sudo git clone https://github.com/your-repo/odoo-fitdnu.git
+cd odoo-fitdnu
+```
 
-### 4.1. Chạy Odoo server
+**Bước 4**: Tạo virtual environment
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
 
+**Bước 5**: Cài đặt các dependency
+```bash
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+**Bước 6**: Cấu hình database PostgreSQL
+```bash
+sudo -u postgres createdb odoo_db
+sudo -u postgres createuser -P odoo_user
+# Nhập mật khẩu khi được yêu cầu
+```
+
+**Bước 7**: Chỉnh sửa file cấu hình
+```bash
+cp odoo.conf.template odoo.conf
+# Sửa file odoo.conf:
+# - db_name = odoo_db
+# - db_user = odoo_user
+# - db_password = <password>
+```
+
+**Bước 8**: Khởi chạy Odoo
 ```bash
 ./odoo-bin -c odoo.conf
+# Hoặc sử dụng Python
+python3 odoo-bin.py -c odoo.conf
 ```
 
-### 4.2. Truy cập hệ thống
+**Bước 9**: Truy cập Odoo
+- Mở trình duyệt: `http://localhost:8069`
+- Tài khoản mặc định: `admin` / `admin`
 
-Mở trình duyệt và truy cập:
+### 4.4. Cài đặt trên Windows
 
+**Bước 1**: Cài đặt Python 3.10+
+- Tải từ https://www.python.org/downloads/
+- Chọn "Add Python to PATH"
+
+**Bước 2**: Cài đặt PostgreSQL
+- Tải từ https://www.postgresql.org/download/windows/
+- Ghi nhớ username và mật khẩu
+
+**Bước 3**: Clone project
+```bash
+git clone https://github.com/your-repo/odoo-fitdnu.git
+cd odoo-fitdnu
 ```
-http://localhost:8069
+
+**Bước 4**: Tạo virtual environment
+```bash
+python -m venv venv
+venv\Scripts\activate
 ```
 
-### 4.3. Cài đặt các ứng dụng
+**Bước 5**: Cài đặt dependencies
+```bash
+pip install --upgrade pip
+pip install -r requirements.txt
+```
 
-Sau khi đăng nhập thành công, bạn có thể cài đặt các ứng dụng cần thiết từ Apps menu.
-
----
-
-## ✅ Hoàn tất
-
-Chúc mừng! Bạn đã cài đặt thành công Odoo - FitDNU. 
-
-**🔗 Các liên kết hữu ích:**
-- [Tài liệu Odoo chính thức](https://www.odoo.com/documentation)
-- [Repository GitLab](https://gitlab.com/anhlta/odoo-fitdnu)
-
----
-
-## 📞 Hỗ trợ
-
-Nếu gặp vấn đề trong quá trình cài đặt, vui lòng tạo issue trên GitLab repository.
+**Bước 6**: Chạy Odoo
+```bash
+python odoo-bin.py -c odoo.conf
+```

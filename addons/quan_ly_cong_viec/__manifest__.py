@@ -26,6 +26,8 @@
     'data': [
         'security/ir.model.access.csv',
         'views/project_task.xml',
+        'views/dashboard.xml',
+        'data/sequence.xml',
         'views/menu.xml',
         
     ],

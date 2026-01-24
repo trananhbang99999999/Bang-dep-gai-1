@@ -148,6 +148,7 @@ class MarketingTask(models.Model):
                 'phong_ban_id': rec.phong_ban_id.id if rec.phong_ban_id else False,
                 'nhan_vien_id': rec.nhan_vien_id.id if rec.nhan_vien_id else False,
                 'description': rec.description or False,
+                'task_type': rec.task_type or False,
                 'priority': rec.priority or False,
                 'difficulty': rec.difficulty or False,
                 'estimated_hours': rec.estimated_hours or 0.0,
@@ -263,7 +264,7 @@ class MarketingTask(models.Model):
         if self._context.get('from_project_task'):
             return res
         propagate_fields = {}
-        allowed = ['name', 'description', 'deadline', 'progress', 'state', 'nhan_vien_id', 'priority']
+        allowed = ['name', 'description', 'deadline', 'progress', 'state', 'nhan_vien_id', 'priority', 'task_type']
         for f in allowed:
             if f in vals:
                 propagate_fields[f] = vals[f]

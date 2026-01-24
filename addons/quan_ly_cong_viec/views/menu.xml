@@ -16,17 +16,13 @@
         <menuitem id="dashboard_graph_employee" name="Nhân viên" parent="dashboard_graphs" sequence="4" action="action_project_task_graph_employee"/>
 
         <!-- Phòng ban menus -->
-        <menuitem id="cskh_menu" name="CSKH" parent="quan_ly_cong_viec_root" sequence="10"/>
-        <menuitem id="cskh_task_menu" name="Công việc CSKH" parent="cskh_menu" action="cskh_task_action" sequence="1"/>
+       
+        <menuitem id="cskh_task_menu" name="Công việc CSKH" parent="quan_ly_cong_viec_root" action="cskh_task_action" sequence="1"/>
 
-        <menuitem id="sales_menu" name="Sales" parent="quan_ly_cong_viec_root" sequence="20"/>
-        <menuitem id="sales_task_menu" name="Công việc Sales" parent="sales_menu" action="sales_task_action" sequence="1"/>
+        <menuitem id="sales_task_menu" name="Công việc Sales" parent="quan_ly_cong_viec_root" action="sales_task_action" sequence="1"/>
 
-        <menuitem id="marketing_menu" name="Marketing" parent="quan_ly_cong_viec_root" sequence="30"/>
-        <menuitem id="marketing_task_menu" name="Công việc Marketing" parent="marketing_menu" action="marketing_task_action" sequence="1"/>
-
-        <menuitem id="ky_thuat_menu" name="Kỹ Thuật" parent="quan_ly_cong_viec_root" sequence="40"/>
-        <menuitem id="ky_thuat_task_menu" name="Công việc Kỹ Thuật" parent="ky_thuat_menu" action="ky_thuat_task_action" sequence="1"/>
+        <menuitem id="marketing_task_menu" name="Công việc Marketing" parent="quan_ly_cong_viec_root" action="marketing_task_action" sequence="1"/>
+        <menuitem id="ky_thuat_task_menu" name="Công việc Kỹ Thuật" parent="quan_ly_cong_viec_root" action="ky_thuat_task_action" sequence="1"/>
 
         <!-- Project Menu -->
         <menuitem id="project_menu" name="Quản lý công việc chung" parent="quan_ly_cong_viec_root" sequence="50"/>

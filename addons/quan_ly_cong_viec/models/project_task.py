@@ -50,6 +50,31 @@ class ProjectTask(models.Model):
 
     description = fields.Text("Mô tả")
 
+    # dynamic selection: union of department-specific types
+    def _get_task_type_options(self):
+        return [
+            ('goi_khach', 'Gọi khách'),
+            ('email', 'Gửi email'),
+            ('hop_khach', 'Họp khách'),
+            ('xu_ly_don', 'Xử lý đơn hàng'),
+            ('giao_hang', 'Giao hàng'),
+            ('support', 'Hỗ trợ kỹ thuật'),
+            ('xu_ly_ghi_chu', 'Xử lý ghi chú'),
+            ('follow_up_lead', 'Follow-up Lead'),
+            ('dam_phan', 'Đàm phán'),
+            ('ky_ket', 'Ký kết'),
+            ('tuong_tac_campaign', 'Tương tác Campaign'),
+            ('phan_tich_khach', 'Phân tích khách hàng'),
+            ('thuc_hien_campaign', 'Thực hiện campaign'),
+            ('fix_issue', 'Sửa chữa vấn đề'),
+            ('support_tech', 'Hỗ trợ kỹ thuật (Kỹ thuật)'),
+            ('investigation', 'Điều tra/Phân tích'),
+            ('phan_tich', 'Phân tích'),
+            ('khac', 'Khác'),
+        ]
+
+    task_type = fields.Selection(selection=_get_task_type_options, string='Loại công việc', tracking=True)
+
     # ✅ THÊM: Phân loại/Dự án (Project/Category)
     project_category_id = fields.Many2one(
         'project.category',
@@ -202,18 +227,30 @@ class ProjectTask(models.Model):
             rec.state = 'cancel'
 
     def write(self, vals):
+        # If state is set to 'done' via UI (kanban drag), ensure project_task itself gets progress and completion date
+        if not (self._context.get('from_cskh') or self._context.get('from_sales') or self._context.get('from_marketing') or self._context.get('from_ky_thuat') or self._context.get('from_project_task')):
+            if vals.get('state') == 'done':
+                vals.setdefault('progress', 100.0)
+                vals.setdefault('actual_completion_date', fields.Date.today())
+
         res = super().write(vals)
         # avoid propagating when the change originates from a department task
         if self._context.get('from_cskh') or self._context.get('from_sales') or self._context.get('from_marketing') or self._context.get('from_ky_thuat') or self._context.get('from_project_task'):
             return res
 
         propagate_fields = {}
-        allowed = ['name', 'description', 'deadline', 'progress', 'state', 'nhan_vien_id', 'priority', 'actual_completion_date', 'estimated_hours', 'actual_hours', 'difficulty']
+        allowed = ['name', 'description', 'deadline', 'progress', 'state', 'nhan_vien_id', 'priority', 'actual_completion_date', 'estimated_hours', 'actual_hours', 'difficulty', 'task_type']
         for f in allowed:
             if f in vals:
                 propagate_fields[f] = vals[f]
 
         if propagate_fields:
+            # if state was changed to 'done', ensure progress + completion date propagate as well
+            if propagate_fields.get('state') == 'done':
+                # prefer provided actual_completion_date, otherwise use today
+                propagate_fields.setdefault('progress', 100.0)
+                propagate_fields.setdefault('actual_completion_date', fields.Date.today())
+
             dept_models = ['cskh_task', 'sales_task', 'marketing_task', 'ky_thuat_task']
             for rec in self:
                 for m in dept_models:

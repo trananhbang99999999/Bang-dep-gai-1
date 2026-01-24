@@ -12,6 +12,7 @@
         <tree string="Danh sách công việc" decoration-danger="is_overdue" decoration-success="state == 'done'" decoration-warning="progress &lt; 50 and state == 'doing'">
           <field name="project_task_id"/>
           <field name="name"/>
+          <field name="task_type"/>
           <field name="customer_id"/>
           <field name="phong_ban_id"/>
           <field name="nhan_vien_id"/>
@@ -57,6 +58,7 @@
                   <field name="project_task_id" readonly="1"/>
                   <field name="name"/>
                   <field name="customer_id"/>
+                  <field name="task_type"/>
                   
                 </group>
               </div>

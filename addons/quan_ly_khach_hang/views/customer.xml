@@ -54,6 +54,8 @@
                             <field name="total_interactions" readonly="1"/>
                             <field name="total_sale_orders" readonly="1"/>
                             <field name="total_amount" readonly="1"/>
+                            <field name="loyalty_points" readonly="1"/>
+                            <field name="customer_tier" readonly="1"/>
                             <field name="recent_interactions" readonly="1"/>
                         </group>
                         <notebook>
@@ -94,6 +96,8 @@
                     <field name="address"/>
                     <field name="customer_type"/>
                     <field name="income_level"/>
+                    <field name="customer_tier"/>
+                    <field name="loyalty_points"/>
                     <field name="company_name"/>
                     <field name="customer_status"/>
                     <field name="total_sale_orders"/>
@@ -170,6 +174,7 @@
                     <group expand="1" string="Group By">
                         <filter string="Loại khách hàng" name="group_by_customer_type" context="{'group_by': 'customer_type'}"/>
                         <filter string="Trạng thái" name="group_by_status" context="{'group_by': 'customer_status'}"/>
+                            <filter string="Hạng khách" name="group_by_tier" context="{'group_by': 'customer_tier'}"/>
                     </group>
                     <searchpanel>
                         <field name="customer_type" string="Loại khách hàng" select="multi"/>
@@ -178,6 +183,7 @@
                         <field name="gender" select="multi" enable_counters="1"/>
                         <field name="age_group" select="multi" enable_counters="1"/>
                         <field name="sale_order_group" select="multi" enable_counters="1"/>
+                        <field name="customer_tier" select="multi"/>
                     </searchpanel>
                 </search>
             </field>

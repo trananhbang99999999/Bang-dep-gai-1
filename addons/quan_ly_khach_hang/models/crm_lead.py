@@ -16,3 +16,18 @@ class CrmLead(models.Model):
         for record in self:
             if record.stage_id:
                 record.probability = record.stage_id.probability
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        records = super(CrmLead, self).create(vals_list)
+        # Tạo công việc CSKH từ cơ hội vừa tạo (nếu có khách hàng liên kết)
+        try:
+            self.env['cskh_task'].create_from_lead(records)
+        except Exception:
+            pass
+        # Tạo công việc Sales từ cơ hội
+        try:
+            self.env['sales_task'].create_from_lead(records)
+        except Exception:
+            pass
+        return records

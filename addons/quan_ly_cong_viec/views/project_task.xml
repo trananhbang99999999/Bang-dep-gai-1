@@ -12,6 +12,7 @@
         <tree string="Danh sách công việc" decoration-danger="is_overdue" decoration-success="state == 'done'" decoration-warning="progress &lt; 50 and state == 'doing'">
           <field name="project_task_id"/>
           <field name="name"/>
+          <field name="task_type"/>
           <field name="customer_id"/>
           <field name="phong_ban_id"/>
           <field name="nhan_vien_id"/>
@@ -57,7 +58,8 @@
                   <field name="project_task_id" readonly="1"/>
                   <field name="name"/>
                   <field name="customer_id"/>
-                  <field name="project_category_id" options="{'no_create': False}"/>
+                  <field name="task_type"/>
+                  
                 </group>
               </div>
               <div class="col-md-6">
@@ -178,8 +180,7 @@
                     context="{'group_by':'nhan_vien_id'}"/>
             <filter name="group_customer" string="Khách hàng"
                     context="{'group_by':'customer_id'}"/>
-            <filter name="group_category" string="Phân loại"
-                    context="{'group_by':'project_category_id'}"/>
+            
             <filter name="group_deadline" string="Deadline"
                     context="{'group_by':'deadline'}"/>
           </group>
@@ -198,44 +199,7 @@
       <field name="view_id" ref="view_project_task_tree"/>
     </record>
 
-    <!-- ✅ THÊM: View cho Project Category -->
-    <record id="view_project_category_tree" model="ir.ui.view">
-      <field name="name">project.category.tree</field>
-      <field name="model">project.category</field>
-      <field name="arch" type="xml">
-        <tree string="Danh sách phân loại công việc">
-          <field name="name"/>
-          <field name="description"/>
-          <field name="active" widget="boolean"/>
-        </tree>
-      </field>
-    </record>
-
-    <record id="view_project_category_form" model="ir.ui.view">
-      <field name="name">project.category.form</field>
-      <field name="model">project.category</field>
-      <field name="arch" type="xml">
-        <form string="Phân loại công việc">
-          <sheet>
-            <group>
-              <field name="name"/>
-              <field name="color" widget="color"/>
-              <field name="active"/>
-            </group>
-            <group>
-              <field name="description"/>
-            </group>
-          </sheet>
-        </form>
-      </field>
-    </record>
-
-    <record id="action_project_category" model="ir.actions.act_window">
-      <field name="name">Phân loại công việc</field>
-      <field name="res_model">project.category</field>
-      <field name="view_mode">tree,form</field>
-      <field name="view_id" ref="view_project_category_tree"/>
-    </record>
+    
 
   </data>
 </odoo>

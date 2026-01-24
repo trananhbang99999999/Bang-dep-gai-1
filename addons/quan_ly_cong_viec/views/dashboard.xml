@@ -51,6 +51,18 @@
       </field>
     </record>
 
+    <!-- ✅ GRAPH VIEW - Biểu đồ theo nhân viên (số lượng nhiệm vụ) -->
+    <record id="view_project_task_graph_employee" model="ir.ui.view">
+      <field name="name">project_task.graph.employee</field>
+      <field name="model">project_task</field>
+      <field name="arch" type="xml">
+        <graph string="Số Nhiệm Vụ Theo Nhân Viên" type="bar">
+          <field name="nhan_vien_id"/>
+          <field name="id" type="measure"/>
+        </graph>
+      </field>
+    </record>
+
     <!-- ✅ KANBAN VIEW (Bảng Kanban - dễ quản lý) -->
     <record id="view_project_task_kanban" model="ir.ui.view">
       <field name="name">project_task.kanban</field>
@@ -172,6 +184,14 @@
       <field name="view_id" ref="view_project_task_graph_department"/>
     </record>
 
+    <!-- ✅ ACTION GRAPH - Nhân viên -->
+    <record id="action_project_task_graph_employee" model="ir.actions.act_window">
+      <field name="name">👥 Biểu Đồ Nhân Viên</field>
+      <field name="res_model">project_task</field>
+      <field name="view_mode">graph,pivot,form</field>
+      <field name="view_id" ref="view_project_task_graph_employee"/>
+    </record>
+
     <!-- ✅ ACTION KANBAN (Bảng Kanban riêng) -->
     <record id="action_project_task_kanban" model="ir.actions.act_window">
       <field name="name">Công Việc - Kanban</field>
@@ -188,5 +208,13 @@
       <field name="view_id" ref="view_project_task_calendar"/>
     </record>
 
-  </data>
+  
+    <!-- Dashboard action referenced by menu -->
+    <record id="dashboard_action" model="ir.actions.act_window">
+      <field name="name">B\u1ea3ng \u0111i\u1ec1u khi\u1ec3n</field>
+      <field name="res_model">project_task</field>
+      <field name="view_mode">kanban,form,tree</field>
+      <field name="view_id" ref="view_project_task_kanban"/>
+    </record>
+</data>
 </odoo>

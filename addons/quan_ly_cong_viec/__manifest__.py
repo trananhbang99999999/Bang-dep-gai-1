@@ -27,6 +27,10 @@
         'security/ir.model.access.csv',
         'views/project_task.xml',
         'views/dashboard.xml',
+        'views/cskh_task.xml',
+        'views/sales_task.xml',
+        'views/marketing_task.xml',
+        'views/ky_thuat_task.xml',
         'data/sequence.xml',
         'views/menu.xml',
         

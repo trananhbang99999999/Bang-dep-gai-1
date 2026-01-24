@@ -2,6 +2,9 @@ import re
 from odoo import models, fields, api, tools
 from odoo.exceptions import ValidationError
 from datetime import datetime, timedelta, date
+import logging
+
+_logger = logging.getLogger(__name__)
 
 class Customer(models.Model):
     _name = 'customer'
@@ -63,6 +66,14 @@ class Customer(models.Model):
     total_interactions = fields.Integer("Tổng số tương tác", compute="_compute_total_interactions", store=True)
     total_sale_orders = fields.Integer("Tổng số đơn hàng", compute="_compute_total_sale_orders", store=True)
     total_amount = fields.Float("Tổng số tiền đơn hàng", compute="_compute_total_amount", store=True)
+    # Loyalty and tier
+    loyalty_points = fields.Integer("Điểm thành viên", default=0, store=True)
+    customer_tier = fields.Selection([
+        ('bronze', 'Bronze'),
+        ('silver', 'Silver'),
+        ('gold', 'Gold'),
+        ('platinum', 'Platinum'),
+    ], string="Hạng khách hàng", compute="_compute_customer_tier", store=True)
     recent_interactions = fields.Integer("Số tương tác trong tháng", compute="_compute_recent_interactions", store=True)
 
     age_group = fields.Selection([
@@ -141,6 +152,91 @@ class Customer(models.Model):
     def _compute_total_amount(self):
         for record in self:
             record.total_amount = sum(record.sale_order_ids.mapped('amount_total')) or 0.0
+
+    @api.depends('sale_order_ids')
+    def _compute_total_sale_orders(self):
+        for record in self:
+            record.total_sale_orders = len(record.sale_order_ids)
+
+    @api.depends('total_amount', 'total_sale_orders', 'contract_ids', 'lead_ids', 'contract_ids', 'interact_ids')
+    def _compute_customer_tier(self):
+        """Compute customer tier based on thresholds.
+
+        Rules (default):
+        - Platinum: total_amount >= 500_000_000 or total_sale_orders >= 50
+        - Gold: total_amount >= 200_000_000 or total_sale_orders >= 20
+        - Silver: total_amount >= 50_000_000 or total_sale_orders >= 5
+        - Bronze: otherwise
+        """
+        for record in self:
+            amt = record.total_amount or 0.0
+            orders = record.total_sale_orders or 0
+            if amt >= 5000000 or orders >= 50:
+                record.customer_tier = 'platinum'
+            elif amt >= 200000 or orders >= 20:
+                record.customer_tier = 'gold'
+            elif amt >= 50000 or orders >= 5:
+                record.customer_tier = 'silver'
+            else:
+                record.customer_tier = 'bronze'
+
+    @api.model
+    def recompute_loyalty_points(self, rate=1000):
+        """Recompute loyalty_points from full sale_order and interact history.
+
+        - `rate`: currency units per 1 point (default 1000).
+        Points from interactions use a fixed map.
+        This ensures points reflect full history, not incremental writes.
+        """
+        points_map = {
+            'meeting': 10,
+            'call': 2,
+            'email': 1,
+        }
+        customers = self
+        if not customers:
+            customers = self.search([])
+        for c in customers:
+            try:
+                total_points = 0
+                # points from sale orders
+                for so in c.sale_order_ids:
+                    try:
+                        total_points += int((so.amount_total or 0.0) / rate)
+                    except Exception:
+                        continue
+                # points from interactions
+                for intr in c.interact_ids:
+                    try:
+                        total_points += points_map.get(intr.interaction_type, 0)
+                    except Exception:
+                        continue
+                if c.loyalty_points != total_points:
+                    c.write({'loyalty_points': total_points})
+            except Exception:
+                _logger.exception('Failed to recompute loyalty points for customer %s', c.id)
+
+    def add_loyalty_points(self, points, reason=None, user_id=None):
+        """Add loyalty points to customer(s).
+
+        - `points` should be an integer (can be negative to deduct).
+        - `reason` is an optional string stored only in logs.
+        """
+        try:
+            pts = int(points)
+        except Exception:
+            _logger.warning('Invalid points value passed to add_loyalty_points: %s', points)
+            return
+        for rec in self:
+            try:
+                current = int(rec.loyalty_points or 0)
+                new = current + pts
+                if new < 0:
+                    new = 0
+                rec.write({'loyalty_points': new})
+                _logger.info('Customer %s: loyalty points changed %s -> %s (reason=%s, user=%s)', rec.id, current, new, reason, user_id)
+            except Exception:
+                _logger.exception('Failed to add loyalty points for customer %s', rec.id)
 
     @api.constrains('date_of_birth')
     def _check_date_of_birth(self):
@@ -319,3 +415,51 @@ class Customer(models.Model):
                 lambda x: x.date and x.date.date() >= start_of_month
             )
             record.recent_interactions = len(recent)
+
+    @api.model
+    def recompute_customer_tiers(self):
+        """Cron: force recompute tiers for all customers."""
+        customers = self.search([])
+        # Ensure aggregated fields are up to date
+        customers._compute_total_sale_orders()
+        customers._compute_total_amount()
+        customers._compute_customer_tier()
+        # Also recompute loyalty points to keep consistent with history
+        try:
+            customers.recompute_loyalty_points()
+        except Exception:
+            _logger.exception('Failed to recompute loyalty points during tier recompute')
+        _logger.info('Recomputed customer tiers for %s customers', len(customers))
+
+    @api.model
+    def expire_loyalty_points(self, days=365):
+        """Cron: expire loyalty points for customers with no orders in `days` days.
+
+        Policy: if the customer's last order is older than `days`, set loyalty_points to 0.
+        """
+        today = fields.Datetime.context_timestamp(self, fields.Datetime.now()).date()
+        cutoff = today - timedelta(days=days)
+        customers = self.search([])
+        expired = 0
+        for c in customers:
+            try:
+                if not c.sale_order_ids:
+                    # no orders -> expire
+                    if c.loyalty_points:
+                        c.write({'loyalty_points': 0})
+                        expired += 1
+                    continue
+                # compute last order date (date portion)
+                last_dates = [ (so.date_order.date() if isinstance(so.date_order, datetime) else fields.Datetime.to_datetime(so.date_order).date()) for so in c.sale_order_ids if so.date_order ]
+                if not last_dates:
+                    if c.loyalty_points:
+                        c.write({'loyalty_points': 0})
+                        expired += 1
+                    continue
+                last_order_date = max(last_dates)
+                if last_order_date < cutoff and c.loyalty_points:
+                    c.write({'loyalty_points': 0})
+                    expired += 1
+            except Exception:
+                _logger.exception('Failed to evaluate/expire points for customer %s', c.id)
+        _logger.info('Expired loyalty points for %s customers (cutoff=%s)', expired, cutoff)

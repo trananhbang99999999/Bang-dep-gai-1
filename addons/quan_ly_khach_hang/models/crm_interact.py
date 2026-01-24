@@ -1,4 +1,7 @@
 from odoo import models, fields, api
+import logging
+
+_logger = logging.getLogger(__name__)
 
 class CrmInteract(models.Model):
     _name = 'crm_interact'
@@ -35,4 +38,32 @@ class CrmInteract(models.Model):
             self.env['marketing_task'].create_from_interact(records)
         except Exception:
             pass
+        # Auto-award loyalty points based on interaction type
+        try:
+            points_map = {
+                'meeting': 10,
+                'call': 2,
+                'email': 1,
+            }
+            for rec in records:
+                try:
+                    if rec.customer_id and rec.interaction_type in points_map:
+                        pts = points_map.get(rec.interaction_type, 0)
+                        if pts:
+                            rec.customer_id.add_loyalty_points(pts, reason=f'interaction:{rec.interaction_type}', user_id=self.env.uid)
+                except Exception:
+                    _logger.exception('Failed to award loyalty points for interact %s', rec.id)
+        except Exception:
+            _logger.exception('Error while awarding loyalty points after crm_interact.create')
         return records
+
+    def unlink(self):
+        affected_customers = self.mapped('customer_id')
+        res = super(CrmInteract, self).unlink()
+        for cust in affected_customers:
+            try:
+                cust.recompute_loyalty_points()
+                cust._compute_customer_tier()
+            except Exception:
+                _logger.exception('Failed to update customer after crm_interact unlink %s', cust.id)
+        return res

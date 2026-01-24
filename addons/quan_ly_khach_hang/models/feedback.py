@@ -24,3 +24,22 @@ class Feedback(models.Model):
             name = f"[{record.feedback_id}] {record.feedback_name}"
             result.append((record.id, name))
         return result
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        records = super(Feedback, self).create(vals_list)
+        try:
+            self.env['cskh_task'].create_from_feedback(records)
+        except Exception:
+            pass
+        # Technical tasks for low ratings
+        try:
+            self.env['ky_thuat_task'].create_from_feedback(records)
+        except Exception:
+            pass
+        # Marketing processing of feedback
+        try:
+            self.env['marketing_task'].create_from_feedback(records)
+        except Exception:
+            pass
+        return records

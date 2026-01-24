@@ -22,3 +22,17 @@ class CrmInteract(models.Model):
             name = f"[{record.crm_interact_id}] {record.crm_interact_name}"
             result.append((record.id, name))
         return result
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        records = super(CrmInteract, self).create(vals_list)
+        try:
+            self.env['cskh_task'].create_from_interact(records)
+        except Exception:
+            pass
+        # marketing task
+        try:
+            self.env['marketing_task'].create_from_interact(records)
+        except Exception:
+            pass
+        return records

@@ -1,66 +1,36 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <odoo>
-  <data>
+    <data>
+        <!-- Main Menu -->
+        <menuitem id="quan_ly_cong_viec_root" name="Quản lý công việc" sequence="10"/>
 
-    <!-- APP ROOT (hiện như 1 ứng dụng ở sidebar) -->
-    <menuitem id="menu_root"
-              name="QLCV"
-              sequence="30"
-              web_icon="ten_module,static/description/icon.png"/>
+        <!-- Dashboard Menu (parent) -->
+        <menuitem id="dashboard_menu" name="Bảng điều khiển" parent="quan_ly_cong_viec_root" sequence="1"/>
 
-    <!-- Nhóm menu -->
-    <menuitem id="menu_danh_muc_chung"
-              name="Danh mục chung"
-              parent="menu_root"
-              sequence="1"/>
+        <!-- Dashboard children: All tasks + Graphs -->
+        <menuitem id="dashboard_all_tasks" name="Tất cả công việc" parent="dashboard_menu" sequence="1" action="action_project_task_kanban"/>
+        <menuitem id="dashboard_graphs" name="Biểu đồ" parent="dashboard_menu" sequence="2"/>
+        <menuitem id="dashboard_graph_state" name="Trạng thái" parent="dashboard_graphs" sequence="1" action="action_project_task_graph_state"/>
+        <menuitem id="dashboard_graph_priority" name="Mức độ ưu tiên" parent="dashboard_graphs" sequence="2" action="action_project_task_graph_priority"/>
+        <menuitem id="dashboard_graph_department" name="Bộ phận" parent="dashboard_graphs" sequence="3" action="action_project_task_graph_department"/>
+        <menuitem id="dashboard_graph_employee" name="Nhân viên" parent="dashboard_graphs" sequence="4" action="action_project_task_graph_employee"/>
 
-    <!-- Action mở danh sách công việc (đúng xml_id action bạn đã tạo) -->
-    <menuitem id="menu_cong_viec"
-              name="Công việc"
-              parent="menu_danh_muc_chung"
-              action="action_project_task"
-              sequence="10"/>
+        <!-- Phòng ban menus -->
+        <menuitem id="cskh_menu" name="CSKH" parent="quan_ly_cong_viec_root" sequence="10"/>
+        <menuitem id="cskh_task_menu" name="Công việc CSKH" parent="cskh_menu" action="cskh_task_action" sequence="1"/>
 
-    <!-- ✅ THÊM: Menu phân loại công việc -->
-    <menuitem id="menu_phan_loai_cong_viec"
-              name="Phân loại công việc"
-              parent="menu_danh_muc_chung"
-              action="action_project_category"
-              sequence="20"/>
+        <menuitem id="sales_menu" name="Sales" parent="quan_ly_cong_viec_root" sequence="20"/>
+        <menuitem id="sales_task_menu" name="Công việc Sales" parent="sales_menu" action="sales_task_action" sequence="1"/>
 
-    <!-- ✅ THÊM: Nhóm menu Báo cáo -->
-    <menuitem id="menu_reports"
-              name="Báo cáo"
-              parent="menu_root"
-              sequence="2"/>
+        <menuitem id="marketing_menu" name="Marketing" parent="quan_ly_cong_viec_root" sequence="30"/>
+        <menuitem id="marketing_task_menu" name="Công việc Marketing" parent="marketing_menu" action="marketing_task_action" sequence="1"/>
 
-    <!-- ✅ THÊM: Menu Phân Tích -->
-    <menuitem id="menu_pivot"
-              name="📊 Phân Tích Chi Tiết"
-              parent="menu_reports"
-              action="action_project_task_pivot"
-              sequence="1"/>
+        <menuitem id="ky_thuat_menu" name="Kỹ Thuật" parent="quan_ly_cong_viec_root" sequence="40"/>
+        <menuitem id="ky_thuat_task_menu" name="Công việc Kỹ Thuật" parent="ky_thuat_menu" action="ky_thuat_task_action" sequence="1"/>
 
-    <!-- ✅ THÊM: Menu Biểu Đồ Trạng Thái -->
-    <menuitem id="menu_graph_state"
-              name="📈 Trạng Thái"
-              parent="menu_reports"
-              action="action_project_task_graph_state"
-              sequence="2"/>
+        <!-- Project Menu -->
+        <menuitem id="project_menu" name="Quản lý công việc chung" parent="quan_ly_cong_viec_root" sequence="50"/>
+        <menuitem id="project_task_menu" name="Tất cả công việc" parent="project_menu" sequence="1"/>
 
-    <!-- ✅ THÊM: Menu Biểu Đồ Ưu Tiên -->
-    <menuitem id="menu_graph_priority"
-              name="🚨 Mức Độ Ưu Tiên"
-              parent="menu_reports"
-              action="action_project_task_graph_priority"
-              sequence="3"/>
-
-    <!-- ✅ THÊM: Menu Biểu Đồ Bộ Phận -->
-    <menuitem id="menu_graph_department"
-              name="🏢 Bộ Phận"
-              parent="menu_reports"
-              action="action_project_task_graph_department"
-              sequence="4"/>
-
-  </data>
+    </data>
 </odoo>

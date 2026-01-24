@@ -17,3 +17,16 @@ class SaleOrder(models.Model):
             name = f"[{record.sale_order_id}] {record.sale_order_name}"
             result.append((record.id, name))
         return result
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        records = super(SaleOrder, self).create(vals_list)
+        try:
+            self.env['cskh_task'].create_from_sale_order(records)
+        except Exception:
+            pass
+        try:
+            self.env['sales_task'].create_from_sale_order(records)
+        except Exception:
+            pass
+        return records

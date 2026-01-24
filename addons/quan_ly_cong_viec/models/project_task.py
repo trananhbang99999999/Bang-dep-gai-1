@@ -200,3 +200,35 @@ class ProjectTask(models.Model):
     def action_cancel(self):
         for rec in self:
             rec.state = 'cancel'
+
+    def write(self, vals):
+        res = super().write(vals)
+        # avoid propagating when the change originates from a department task
+        if self._context.get('from_cskh') or self._context.get('from_sales') or self._context.get('from_marketing') or self._context.get('from_ky_thuat') or self._context.get('from_project_task'):
+            return res
+
+        propagate_fields = {}
+        allowed = ['name', 'description', 'deadline', 'progress', 'state', 'nhan_vien_id', 'priority', 'actual_completion_date', 'estimated_hours', 'actual_hours', 'difficulty']
+        for f in allowed:
+            if f in vals:
+                propagate_fields[f] = vals[f]
+
+        if propagate_fields:
+            dept_models = ['cskh_task', 'sales_task', 'marketing_task', 'ky_thuat_task']
+            for rec in self:
+                for m in dept_models:
+                    tasks = self.env[m].search([('project_task_id', '=', rec.id)])
+                    if tasks:
+                        # mark origin to avoid recursion back to project_task
+                        tasks.with_context(from_project_task=True).write(propagate_fields)
+        return res
+
+    def unlink(self):
+        # when a dashboard/project_task is removed, clear links on department tasks
+        dept_models = ['cskh_task', 'sales_task', 'marketing_task', 'ky_thuat_task']
+        for rec in self:
+            for m in dept_models:
+                tasks = self.env[m].search([('project_task_id', '=', rec.id)])
+                if tasks:
+                    tasks.with_context(from_project_task=True).write({'project_task_id': False})
+        return super().unlink()

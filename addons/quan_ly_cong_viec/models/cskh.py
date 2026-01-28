@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
-from datetime import date
+from datetime import date, timedelta
 
 
 class CskhTask(models.Model):
@@ -248,14 +248,50 @@ class CskhTask(models.Model):
         for f in feedbacks:
             if not f.customer_id:
                 continue
-            name = f.feedback_name or f.feedback_id or f'Phản hồi {f.id}'
-            desc = f'Auto tạo từ phản hồi: {name} (Đánh giá: {f.rating})' if hasattr(f, 'rating') else f'Auto tạo từ phản hồi: {name}'
+            # Skip if a CSKH task already exists for this feedback (prevent duplicates)
+            try:
+                existing = self.search([('source_model', '=', 'feedback'), ('source_id', '=', f.id)], limit=1)
+                if existing:
+                    continue
+            except Exception:
+                # If search fails for any reason, proceed to create (safer default)
+                pass
+            # Determine if feedback is negative (by sentiment label or rating)
+            try:
+                sent = (getattr(f, 'sentiment_label', None) or '').lower()
+                is_negative = sent == 'negative' or str(getattr(f, 'rating', '') or '') in ('1', '2')
+            except Exception:
+                is_negative = False
+
+            if is_negative:
+                cust_name = getattr(f.customer_id, 'customer_name', None) or getattr(f.customer_id, 'name', None) or f.customer_id.id
+                name = f'Xử lý phản hồi không hài lòng của khách hàng {cust_name}'
+                desc = f'Auto tạo từ phản hồi (tiêu cực): {getattr(f, "feedback_name", None) or getattr(f, "feedback_id", None) or f"Phản hồi {f.id}"} (Đánh giá: {getattr(f, "rating", "")})'
+                priority = 'high'
+                # deadline within 24 hours
+                try:
+                    dl = date.today() + timedelta(days=1)
+                except Exception:
+                    dl = False
+            else:
+                name = f.feedback_name or f.feedback_id or f'Phản hồi {f.id}'
+                desc = f'Auto tạo từ phản hồi: {name}'
+                try:
+                    priority = 'medium'
+                    if (getattr(f, 'sentiment_label', None) or '').lower() == 'negative' or str(getattr(f, 'rating', '') or '') in ('1', '2'):
+                        priority = 'high'
+                except Exception:
+                    priority = 'medium'
+                dl = False
+
             to_create.append({
                 'name': name,
                 'customer_id': f.customer_id.id,
                 'source_model': 'feedback',
                 'source_id': f.id,
                 'description': desc,
+                'priority': priority,
+                'deadline': dl or False,
             })
         if to_create:
             return self.create(to_create)
@@ -335,6 +371,7 @@ class CskhTask(models.Model):
     def unlink(self):
         # Remove mirrored project_task to keep dashboard showing only department tasks
         pts = self.mapped('project_task_id')
-        if pts:
+        # avoid recursion when unlink originates from project_task
+        if pts and not self._context.get('from_project_task'):
             pts.with_context(from_cskh=True).unlink()
         return super().unlink()

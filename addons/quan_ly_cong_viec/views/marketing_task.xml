@@ -16,7 +16,7 @@
                     <field name="nhan_vien_id"/>
                     <field name="priority" widget="badge"/>
                     <field name="deadline"/>
-                    <field name="state" widget="badge"/>
+                    <field name="state" widget="badge" decoration-success="state == 'done'" decoration-danger="state == 'cancel'"/>
                 </tree>
             </field>
         </record>

@@ -8,3 +8,4 @@ access_sale_order,sale_order.sale_order,model_sale_order,base.group_user,1,1,1,1
 access_note,note.note,model_note,base.group_user,1,1,1,1
 access_feedback,feedback.feedback,model_feedback,base.group_user,1,1,1,1
 access_marketing_campaign,marketing_campaign.marketing_campaign,model_marketing_campaign,base.group_user,1,1,1,1
+

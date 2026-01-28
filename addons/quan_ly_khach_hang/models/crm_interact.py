@@ -58,6 +58,24 @@ class CrmInteract(models.Model):
         return records
 
     def unlink(self):
+        # Cancel any mirrored project tasks created from these interactions
+        try:
+            dept_models = ['cskh_task', 'marketing_task', 'sales_task', 'ky_thuat_task']
+            for m in dept_models:
+                try:
+                    tasks = self.env[m].search([('source_model', '=', 'crm_interact'), ('source_id', 'in', self.ids)])
+                    if tasks:
+                        pts = tasks.mapped('project_task_id')
+                        if pts:
+                            try:
+                                pts.action_cancel()
+                            except Exception:
+                                pts.write({'state': 'cancel'})
+                except Exception:
+                    _logger.exception('Error while cancelling dept tasks for crm_interact.unlink in model %s', m)
+        except Exception:
+            _logger.exception('Unexpected error while cancelling project tasks for crm_interact.unlink')
+
         affected_customers = self.mapped('customer_id')
         res = super(CrmInteract, self).unlink()
         for cust in affected_customers:

@@ -13,6 +13,8 @@
                             <field name="feedback_name"/>
                             <field name="customer_id"/>
                             <field name="feedback"/>
+                            <field name="sentiment_label" readonly="1"/>
+                            <field name="sentiment_score" readonly="1"/>
                             <field name="feedback_date"/>
                             <field name="rating"/>
                         </group>
@@ -29,6 +31,8 @@
                     <field name="feedback_id"/>
                     <field name="feedback_name"/>
                     <field name="feedback"/>
+                    <field name="sentiment_label" readonly="1"/>
+                    <field name="sentiment_score" readonly="1"/>
                     <field name="feedback_date"/>
                     <field name="rating"/>
                 </tree>

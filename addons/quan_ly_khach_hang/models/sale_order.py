@@ -46,6 +46,25 @@ class SaleOrder(models.Model):
         return records
 
     def unlink(self):
+        # Cancel any mirrored project tasks created from these sale orders
+        try:
+            dept_models = ['sales_task', 'cskh_task', 'marketing_task', 'ky_thuat_task']
+            ptasks = self.env['project_task']
+            for m in dept_models:
+                try:
+                    tasks = self.env[m].search([('source_model', '=', 'sale_order'), ('source_id', 'in', self.ids)])
+                    if tasks:
+                        pts = tasks.mapped('project_task_id')
+                        if pts:
+                            try:
+                                pts.action_cancel()
+                            except Exception:
+                                pts.write({'state': 'cancel'})
+                except Exception:
+                    _logger.exception('Error while cancelling dept tasks for sale_order.unlink in model %s', m)
+        except Exception:
+            _logger.exception('Unexpected error while cancelling project tasks for sale_order.unlink')
+
         affected_customers = self.mapped('customer_id')
         res = super(SaleOrder, self).unlink()
         for cust in affected_customers:

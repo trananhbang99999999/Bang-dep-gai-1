@@ -63,20 +63,20 @@ Thay vì sử dụng các tệp Excel rời rạc hay hệ thống thủ công, 
 - 🏢 Tổ chức cấu trúc công ty (phòng ban, chức vụ, quản lý cấp bậc)
 - 📋 Quản lý hợp đồng lao động, tuyển dụng và onboarding nhân viên
 ### 💼 Quản lý Công Việc (Projects Module)
-- � Tạo và quản lý dự án
+- 🧩 Tạo và quản lý dự án
 - 📅 Lập kế hoạch dự án, phân công nhiệm vụ cho nhân viên
 - 🎯 Theo dõi tiến độ công việc, thời hạn hoàn thành
-- � Phân công tài nguyên, quản lý thành viên dự án
+- 👥 Phân công tài nguyên, quản lý thành viên dự án
 - ⏱️ Ghi nhận thời gian làm việc, báo cáo chi phí dự án
 - 📈 Báo cáo tiến độ, phân tích năng suất và hiệu quả dự án
 
 
 ### 👥 Quản lý Khách Hàng (CRM Module)
 - 💼 Quản lý danh bạ khách hàng (công ty, liên hệ cá nhân)
-- � Lưu trữ thông tin liên lạc, lịch sử tương tác khách hàng
+- 📇 Lưu trữ thông tin liên lạc, lịch sử tương tác khách hàng
 - 🎯 Quản lý cơ hội kinh doanh, bán hàng và quy trình bán hàng
-- � Quản lý email, cuộc gọi, cuộc họp và sự kiện khách hàng
-- � Quản lý hoạt động, nhiệm vụ liên quan đến khách hàng
+- ✉️ Quản lý email, cuộc gọi, cuộc họp và sự kiện khách hàng
+- 🗂️ Quản lý hoạt động, nhiệm vụ liên quan đến khách hàng
 
 ## 🖼️ 4. Giao diện chính
 <div align="center">
@@ -215,17 +215,11 @@ pip install -r requirements.txt
 ```bash
 python odoo-bin.py -c odoo.conf
 ```
-## 📞 8. Support & Liên Hệ
+## 📞 6. Support & Liên Hệ
 
 - 📧 Email: [vinh036648@gmail.com]
 - 🌐 Website: [https://dainam.edu.vn]
 - 💬 Issues: GitHub Issues
-
-## 📄 9. License & Attribution
-
-- **License**: [MIT/GPL/Commercial]
-- **Developed by**: Faculty of Information Technology, DaiNam University
-- **Built with**: [Odoo](https://odoo.com)
 
 <div align="center">
 

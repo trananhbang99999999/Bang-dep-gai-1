@@ -15,7 +15,7 @@
         <img src="./images/dnu_logo.png" alt="DaiNam University Logo" width="200"/>
     </p>
 
-[![Odoo](https://img.shields.io/badge/Odoo-6C3696?style=for-the-badge&logo=odoo&logoColor=white)](https://www.odoo.com/)
+[![AIoTLab](https://img.shields.io/badge/AIoTLab-green?style=for-the-badge)](https://www.facebook.com/DNUAIoTLab)
 [![Faculty of Information Technology](https://img.shields.io/badge/Faculty%20of%20Information%20Technology-blue?style=for-the-badge)](https://dainam.edu.vn/vi/khoa-cong-nghe-thong-tin)
 [![DaiNam University](https://img.shields.io/badge/DaiNam%20University-orange?style=for-the-badge)](https://dainam.edu.vn)
 
@@ -89,18 +89,10 @@ Thay vì sử dụng các tệp Excel rời rạc hay hệ thống thủ công, 
 - 🗂️ Quản lý hoạt động, nhiệm vụ liên quan đến khách hàng
 - 🔔 Thông báo, nhắc nhở và tự động hóa quy trình CRM
 
-### 📊 Báo Cáo & Phân Tích
-- 📈 Báo cáo chi tiết về nhân sự, chấm công, lương
-- 📉 Phân tích xu hướng, thống kê, dự báo
-- 🎯 Bảng điều khiển (Dashboard) tổng hợp thông tin chính
-- 📄 Xuất báo cáo sang Excel, PDF
 
 ## ⚙️ 4. Cài đặt và Chạy Hệ Thống
 
 ## 🖼️ 5. Giao diện chính (Screenshots)
-
-Dưới đây là ảnh chụp giao diện chính lấy từ thư mục `images/` (đã đặt sẵn trong repository):
-
 <div align="center">
 
 ![Giao diện Nhân sự](./images/nhan_su.png)
@@ -110,8 +102,6 @@ Dưới đây là ảnh chụp giao diện chính lấy từ thư mục `images/
 ![Giao diện Công việc / Dashboard](./images/cong_viec.png)
 
 </div>
-
-Nếu bạn muốn thay đổi thứ tự, kích thước (width/height) hoặc thêm chú thích dưới mỗi ảnh, tôi sẽ cập nhật ngay.
 
 ### 4.1. Yêu cầu hệ thống
 
@@ -125,7 +115,7 @@ Nếu bạn muốn thay đổi thứ tự, kích thước (width/height) hoặc 
 
 **Bước 1**: Clone project
 ```bash
-git clone https://github.com/your-repo/odoo-fitdnu.git
+git clone https://github.com/VnhPhn/TTDN-16-02-N4
 cd odoo-fitdnu
 ```
 
@@ -160,7 +150,7 @@ sudo apt install -y python3 python3-pip python3-dev postgresql postgresql-contri
 **Bước 3**: Clone project
 ```bash
 cd /opt
-sudo git clone https://github.com/your-repo/odoo-fitdnu.git
+sudo git clone https://github.com/VnhPhn/TTDN-16-02-N4
 cd odoo-fitdnu
 ```
 
@@ -215,7 +205,7 @@ python3 odoo-bin.py -c odoo.conf
 
 **Bước 3**: Clone project
 ```bash
-git clone https://github.com/your-repo/odoo-fitdnu.git
+git clone https://github.com/VnhPhn/TTDN-16-02-N4
 cd odoo-fitdnu
 ```
 
@@ -235,76 +225,21 @@ pip install -r requirements.txt
 ```bash
 python odoo-bin.py -c odoo.conf
 ```
-khung như này này
----
-![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
-![GitLab](https://img.shields.io/badge/gitlab-%23181717.svg?style=for-the-badge&logo=gitlab&logoColor=white)
-![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+## 📞 8. Support & Liên Hệ
 
-![Python](https://img.shields.io/badge/python-v3.8+-blue.svg)
-[![security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
+- 📧 Email: [vinh036648@gmail.com]
+- 🌐 Website: [https://dainam.edu.vn]
+- 💬 Issues: GitHub Issues
 
+## 📄 9. License & Attribution
 
+- **License**: [MIT/GPL/Commercial]
+- **Developed by**: Faculty of Information Technology, DaiNam University
+- **Built with**: [Odoo](https://odoo.com), [Groq](https://groq.com)
 
+<div align="center">
 
-# 1. Cài đặt công cụ, môi trường và các thư viện cần thiết
+Made with ❤️ by VinhPhan, VuPhu, KhanhXG
 
-## 1.1. Clone project.
-git clone https://gitlab.com/anhlta/odoo-fitdnu.git
-git checkout 
-
-## 1.2. cài đặt các thư viện cần thiết
-
-Người sử dụng thực thi các lệnh sau đề cài đặt các thư viện cần thiết
-
-```
-sudo apt-get install libxml2-dev libxslt-dev libldap2-dev libsasl2-dev libssl-dev python3.10-distutils python3.10-dev build-essential libssl-dev libffi-dev zlib1g-dev python3.10-venv libpq-dev
-```
-## 1.3. khởi tạo môi trường ảo.
-
-`python3.10 -m venv ./venv`
-Thay đổi trình thông dịch sang môi trường ảo và chạy requirements.txt để cài đặt tiếp các thư viện được yêu cầu
-
-```
-source venv/bin/activate
-pip3 install -r requirements.txt
-```
-
-# 2. Setup database
-
-Khởi tạo database trên docker bằng việc thực thi file dockercompose.yml.
-
-`docker-compose up -d`
-
-# 3. Setup tham số chạy cho hệ thống
-
-## 3.1. Khởi tạo odoo.conf
-
-Tạo tệp **odoo.conf** có nội dung như sau:
-
-```
-[options]
-addons_path = addons
-db_host = localhost
-db_password = odoo
-db_user = odoo
-db_port = 5432
-xmlrpc_port = 8069
-```
-Có thể kế thừa từ **odoo.conf.template**
-
-Ngoài ra có thể thêm mổ số parameters như:
-
-```
--c _<đường dẫn đến tệp odoo.conf>_
--u _<tên addons>_ giúp cập nhật addons đó trước khi khởi chạy
--d _<tên database>_ giúp chỉ rõ tên database được sử dụng
---dev=all giúp bật chế độ nhà phát triển 
-```
-
-# 4. Chạy hệ thống và cài đặt các ứng dụng cần thiết
-
-Người sử dụng truy cập theo đường dẫn _http://localhost:8069/_ để đăng nhập vào hệ thống.
-
-Hoàn tất
+</div>
     

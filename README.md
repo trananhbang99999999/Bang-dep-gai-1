@@ -219,7 +219,6 @@ python odoo-bin.py -c odoo.conf
 
 - 📧 Email: [vinh036648@gmail.com]
 - 🌐 Website: [https://dainam.edu.vn]
-- 💬 Issues: GitHub Issues
 
 <div align="center">
 

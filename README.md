@@ -222,7 +222,7 @@ python odoo-bin.py -c odoo.conf
 
 <div align="center">
 
-Made with ❤️ by VinhPhan, VuPhu, KhanhXG
+Made with  by VinhPhan, VuPhu, KhanhXG
 
 </div>
     

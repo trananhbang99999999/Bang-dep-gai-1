@@ -14,7 +14,7 @@
         <img src="images/dnu_logo.png" alt="DaiNam University Logo" width="200"/>
     </p>
 
-[![Odoo](https://img.shields.io/badge/Odoo-6C3696?style=for-the-badge&logo=odoo&logoColor=white)](https://www.odoo.com/)
+[![AIoTLab](https://img.shields.io/badge/AIoTLab-green?style=for-the-badge)](https://www.facebook.com/DNUAIoTLab)
 [![Faculty of Information Technology](https://img.shields.io/badge/Faculty%20of%20Information%20Technology-blue?style=for-the-badge)](https://dainam.edu.vn/vi/khoa-cong-nghe-thong-tin)
 [![DaiNam University](https://img.shields.io/badge/DaiNam%20University-orange?style=for-the-badge)](https://dainam.edu.vn)
 
@@ -33,7 +33,7 @@ Thay vì sử dụng các tệp Excel rời rạc hay hệ thống thủ công, 
 <div align="center">
 
 ### Nền Tảng Chính
-[![Odoo](https://img.shields.io/badge/Odoo%2017-6C3696?style=for-the-badge&logo=odoo&logoColor=white)](https://www.odoo.com/)
+[![Odoo](https://img.shields.io/badge/Odoo%2015-6C3696?style=for-the-badge&logo=odoo&logoColor=white)](https://www.odoo.com/)
 [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 
 ### Công nghệ Backend
@@ -62,41 +62,38 @@ Thay vì sử dụng các tệp Excel rời rạc hay hệ thống thủ công, 
 - 👥 Quản lý thông tin nhân viên chi tiết (thông tin cá nhân, liên lạc, hợp đồng)
 - 🏢 Tổ chức cấu trúc công ty (phòng ban, chức vụ, quản lý cấp bậc)
 - 📋 Quản lý hợp đồng lao động, tuyển dụng và onboarding nhân viên
-- 🎓 Quản lý kỹ năng, đào tạo, phát triển nhân sự và sự nghiệp
-- 📊 Biểu đồ tổ chức, sơ đồ cấu trúc công ty và quản lý cấp độ quản lý
-- 🏅 Quản lý hiệu suất, đánh giá kỹ năng và phát triển năng lực
-- �‍👩‍👧‍👦 Quản lý thông tin gia đình, người phụ thuộc và sức khỏe
-
 ### 💼 Quản lý Công Việc (Projects Module)
-- � Tạo và quản lý dự án theo phương pháp agile hoặc waterfall
+- 🧩 Tạo và quản lý dự án
 - 📅 Lập kế hoạch dự án, phân công nhiệm vụ cho nhân viên
 - 🎯 Theo dõi tiến độ công việc, thời hạn hoàn thành
-- � Phân công tài nguyên, quản lý thành viên dự án
+- 👥 Phân công tài nguyên, quản lý thành viên dự án
 - ⏱️ Ghi nhận thời gian làm việc, báo cáo chi phí dự án
-- � Kiểm soát chất lượng, quản lý rủi ro và vấn đề dự án
 - 📈 Báo cáo tiến độ, phân tích năng suất và hiệu quả dự án
-- � Theo dõi các mục tiêu, cột mốc và giai đoạn dự án
+
 
 ### 👥 Quản lý Khách Hàng (CRM Module)
 - 💼 Quản lý danh bạ khách hàng (công ty, liên hệ cá nhân)
-- � Lưu trữ thông tin liên lạc, lịch sử tương tác khách hàng
+- 📇 Lưu trữ thông tin liên lạc, lịch sử tương tác khách hàng
 - 🎯 Quản lý cơ hội kinh doanh, bán hàng và quy trình bán hàng
-- � Quản lý email, cuộc gọi, cuộc họp và sự kiện khách hàng
-- � Phân loại khách hàng, phân tích tiềm năng và giá trị
-- 📈 Báo cáo doanh số, phân tích xu hướng bán hàng
-- 🎁 Quản lý khuyến mãi, chiến dịch bán hàng và chương trình khách hàng trung thành
-- � Quản lý hoạt động, nhiệm vụ liên quan đến khách hàng
-- 🔔 Thông báo, nhắc nhở và tự động hóa quy trình CRM
+- ✉️ Quản lý email, cuộc gọi, cuộc họp và sự kiện khách hàng
+- 🗂️ Quản lý hoạt động, nhiệm vụ liên quan đến khách hàng
 
-### 📊 Báo Cáo & Phân Tích
-- 📈 Báo cáo chi tiết về nhân sự, chấm công, lương
-- 📉 Phân tích xu hướng, thống kê, dự báo
-- 🎯 Bảng điều khiển (Dashboard) tổng hợp thông tin chính
-- 📄 Xuất báo cáo sang Excel, PDF
+## 🖼️ 4. Giao diện chính
+<div align="center">
 
-## ⚙️ 4. Cài đặt và Chạy Hệ Thống
+![Giao diện Nhân sự](./images/nhan_su.png)
 
-### 4.1. Yêu cầu hệ thống
+![Giao diện Khách hàng](./images/khach_hang.png)
+
+![Giao diện Công việc / Dashboard](./images/cong_viec.png)
+
+</div>
+
+## ⚙️ 5. Cài đặt và Chạy Hệ Thống
+
+
+
+### 5.1. Yêu cầu hệ thống
 
 - **Python 3.10+** 
 - **PostgreSQL 12+**
@@ -104,11 +101,11 @@ Thay vì sử dụng các tệp Excel rời rạc hay hệ thống thủ công, 
 - **Git**
 - **Ít nhất 4GB RAM**, 10GB dung lượng ổ cứng
 
-### 4.2. Cài đặt sử dụng Docker (Khuyến nghị)
+### 5.2. Cài đặt sử dụng Docker (Khuyến nghị)
 
 **Bước 1**: Clone project
 ```bash
-git clone https://github.com/your-repo/odoo-fitdnu.git
+git clone https://github.com/VnhPhn/TTDN-16-02-N4
 cd odoo-fitdnu
 ```
 
@@ -126,7 +123,7 @@ docker-compose up -d
 - Mở trình duyệt: `http://localhost:8069`
 
 
-### 4.3. Cài đặt trên máy chủ Linux (Ubuntu/Debian)
+### 5.3. Cài đặt trên máy chủ Linux (Ubuntu/Debian)
 
 **Bước 1**: Cập nhật hệ thống
 ```bash
@@ -143,7 +140,7 @@ sudo apt install -y python3 python3-pip python3-dev postgresql postgresql-contri
 **Bước 3**: Clone project
 ```bash
 cd /opt
-sudo git clone https://github.com/your-repo/odoo-fitdnu.git
+sudo git clone https://github.com/VnhPhn/TTDN-16-02-N4
 cd odoo-fitdnu
 ```
 
@@ -186,7 +183,7 @@ python3 odoo-bin.py -c odoo.conf
 - Mở trình duyệt: `http://localhost:8069`
 - Tài khoản mặc định: `admin` / `admin`
 
-### 4.4. Cài đặt trên Windows
+### 5.4. Cài đặt trên Windows
 
 **Bước 1**: Cài đặt Python 3.10+
 - Tải từ https://www.python.org/downloads/
@@ -198,7 +195,7 @@ python3 odoo-bin.py -c odoo.conf
 
 **Bước 3**: Clone project
 ```bash
-git clone https://github.com/your-repo/odoo-fitdnu.git
+git clone https://github.com/VnhPhn/TTDN-16-02-N4
 cd odoo-fitdnu
 ```
 
@@ -218,3 +215,15 @@ pip install -r requirements.txt
 ```bash
 python odoo-bin.py -c odoo.conf
 ```
+## 📞 6. Support & Liên Hệ
+
+- 📧 Email: [vinh036648@gmail.com]
+- 🌐 Website: [https://dainam.edu.vn]
+- 💬 Issues: GitHub Issues
+
+<div align="center">
+
+Made with ❤️ by VinhPhan, VuPhu, KhanhXG
+
+</div>
+    

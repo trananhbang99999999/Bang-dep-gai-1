@@ -1,4 +1,3 @@
-
 <h2 align="center">
     <a href="https://dainam.edu.vn/vi/khoa-cong-nghe-thong-tin">
     🎓 Faculty of Information Technology (DaiNam University)
@@ -10,9 +9,9 @@
 </h2>
 <div align="center">
     <p align="center">
-        <img src="./images/aiotlab_logo.png" alt="AIoTLab Logo" width="170"/>
-        <img src="./images/fitdnu_logo.png" alt="AIoTLab Logo" width="180"/>
-        <img src="./images/dnu_logo.png" alt="DaiNam University Logo" width="200"/>
+        <img src="images/aiotlab_logo.png" alt="AIoTLab Logo" width="170"/>
+        <img src="images/fitdnu_logo.png" alt="AIoTLab Logo" width="180"/>
+        <img src="images/dnu_logo.png" alt="DaiNam University Logo" width="200"/>
     </p>
 
 [![Odoo](https://img.shields.io/badge/Odoo-6C3696?style=for-the-badge&logo=odoo&logoColor=white)](https://www.odoo.com/)
@@ -28,7 +27,7 @@ Hệ thống Quản lý Nhân Sự, Công Việc và Khách Hàng được xây 
 - **Quản lý Công Việc (Projects)**: Lên kế hoạch, phân công công việc, theo dõi tiến độ, quản lý nhiệm vụ và báo cáo hiệu suất
 - **Quản lý Khách Hàng (CRM)**: Quản lý danh bạ khách hàng, cơ hội kinh doanh, bán hàng, tương tác khách hàng và phân tích dữ liệu
 
-Thay vì sử dụng các tệp Excel rời rạc hay hệ thống thủ công, giải pháp này mang lại một nền tảng tập trung, hiện đại, tự động hóa và dễ sử dụng cho toàn bộ quy trình quản lý doanh nghiệp。
+Thay vì sử dụng các tệp Excel rời rạc hay hệ thống thủ công, giải pháp này mang lại một nền tảng tập trung, hiện đại, tự động hóa và dễ sử dụng cho toàn bộ quy trình quản lý doanh nghiệp.
 
 ## 🔧 2. Các công nghệ được sử dụng
 <div align="center">
@@ -66,27 +65,27 @@ Thay vì sử dụng các tệp Excel rời rạc hay hệ thống thủ công, 
 - 🎓 Quản lý kỹ năng, đào tạo, phát triển nhân sự và sự nghiệp
 - 📊 Biểu đồ tổ chức, sơ đồ cấu trúc công ty và quản lý cấp độ quản lý
 - 🏅 Quản lý hiệu suất, đánh giá kỹ năng và phát triển năng lực
-- 👪 Quản lý thông tin gia đình, người phụ thuộc và sức khỏe
+- �‍👩‍👧‍👦 Quản lý thông tin gia đình, người phụ thuộc và sức khỏe
 
 ### 💼 Quản lý Công Việc (Projects Module)
-- 🧩 Tạo và quản lý dự án theo phương pháp agile hoặc waterfall
+- � Tạo và quản lý dự án theo phương pháp agile hoặc waterfall
 - 📅 Lập kế hoạch dự án, phân công nhiệm vụ cho nhân viên
 - 🎯 Theo dõi tiến độ công việc, thời hạn hoàn thành
-- 👥 Phân công tài nguyên, quản lý thành viên dự án
+- � Phân công tài nguyên, quản lý thành viên dự án
 - ⏱️ Ghi nhận thời gian làm việc, báo cáo chi phí dự án
-- ✅ Kiểm soát chất lượng, quản lý rủi ro và vấn đề dự án
+- � Kiểm soát chất lượng, quản lý rủi ro và vấn đề dự án
 - 📈 Báo cáo tiến độ, phân tích năng suất và hiệu quả dự án
-- 🏁 Theo dõi các mục tiêu, cột mốc và giai đoạn dự án
+- � Theo dõi các mục tiêu, cột mốc và giai đoạn dự án
 
 ### 👥 Quản lý Khách Hàng (CRM Module)
 - 💼 Quản lý danh bạ khách hàng (công ty, liên hệ cá nhân)
-- 📇 Lưu trữ thông tin liên lạc, lịch sử tương tác khách hàng
+- � Lưu trữ thông tin liên lạc, lịch sử tương tác khách hàng
 - 🎯 Quản lý cơ hội kinh doanh, bán hàng và quy trình bán hàng
-- ✉️ Quản lý email, cuộc gọi, cuộc họp và sự kiện khách hàng
-- 🔍 Phân loại khách hàng, phân tích tiềm năng và giá trị
+- � Quản lý email, cuộc gọi, cuộc họp và sự kiện khách hàng
+- � Phân loại khách hàng, phân tích tiềm năng và giá trị
 - 📈 Báo cáo doanh số, phân tích xu hướng bán hàng
 - 🎁 Quản lý khuyến mãi, chiến dịch bán hàng và chương trình khách hàng trung thành
-- 🗂️ Quản lý hoạt động, nhiệm vụ liên quan đến khách hàng
+- � Quản lý hoạt động, nhiệm vụ liên quan đến khách hàng
 - 🔔 Thông báo, nhắc nhở và tự động hóa quy trình CRM
 
 ### 📊 Báo Cáo & Phân Tích
@@ -96,22 +95,6 @@ Thay vì sử dụng các tệp Excel rời rạc hay hệ thống thủ công, 
 - 📄 Xuất báo cáo sang Excel, PDF
 
 ## ⚙️ 4. Cài đặt và Chạy Hệ Thống
-
-## 🖼️ 5. Giao diện chính (Screenshots)
-
-Dưới đây là ảnh chụp giao diện chính lấy từ thư mục `images/` (đã đặt sẵn trong repository):
-
-<div align="center">
-
-![Giao diện Nhân sự](./images/nhan_su.png)
-
-![Giao diện Khách hàng](./images/khach_hang.png)
-
-![Giao diện Công việc / Dashboard](./images/cong_viec.png)
-
-</div>
-
-Nếu bạn muốn thay đổi thứ tự, kích thước (width/height) hoặc thêm chú thích dưới mỗi ảnh, tôi sẽ cập nhật ngay.
 
 ### 4.1. Yêu cầu hệ thống
 
@@ -222,7 +205,7 @@ cd odoo-fitdnu
 **Bước 4**: Tạo virtual environment
 ```bash
 python -m venv venv
-venv\\Scripts\\activate
+venv\Scripts\activate
 ```
 
 **Bước 5**: Cài đặt dependencies
@@ -235,76 +218,3 @@ pip install -r requirements.txt
 ```bash
 python odoo-bin.py -c odoo.conf
 ```
-khung như này này
----
-![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
-![GitLab](https://img.shields.io/badge/gitlab-%23181717.svg?style=for-the-badge&logo=gitlab&logoColor=white)
-![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
-
-![Python](https://img.shields.io/badge/python-v3.8+-blue.svg)
-[![security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
-
-
-
-
-# 1. Cài đặt công cụ, môi trường và các thư viện cần thiết
-
-## 1.1. Clone project.
-git clone https://gitlab.com/anhlta/odoo-fitdnu.git
-git checkout 
-
-## 1.2. cài đặt các thư viện cần thiết
-
-Người sử dụng thực thi các lệnh sau đề cài đặt các thư viện cần thiết
-
-```
-sudo apt-get install libxml2-dev libxslt-dev libldap2-dev libsasl2-dev libssl-dev python3.10-distutils python3.10-dev build-essential libssl-dev libffi-dev zlib1g-dev python3.10-venv libpq-dev
-```
-## 1.3. khởi tạo môi trường ảo.
-
-`python3.10 -m venv ./venv`
-Thay đổi trình thông dịch sang môi trường ảo và chạy requirements.txt để cài đặt tiếp các thư viện được yêu cầu
-
-```
-source venv/bin/activate
-pip3 install -r requirements.txt
-```
-
-# 2. Setup database
-
-Khởi tạo database trên docker bằng việc thực thi file dockercompose.yml.
-
-`docker-compose up -d`
-
-# 3. Setup tham số chạy cho hệ thống
-
-## 3.1. Khởi tạo odoo.conf
-
-Tạo tệp **odoo.conf** có nội dung như sau:
-
-```
-[options]
-addons_path = addons
-db_host = localhost
-db_password = odoo
-db_user = odoo
-db_port = 5432
-xmlrpc_port = 8069
-```
-Có thể kế thừa từ **odoo.conf.template**
-
-Ngoài ra có thể thêm mổ số parameters như:
-
-```
--c _<đường dẫn đến tệp odoo.conf>_
--u _<tên addons>_ giúp cập nhật addons đó trước khi khởi chạy
--d _<tên database>_ giúp chỉ rõ tên database được sử dụng
---dev=all giúp bật chế độ nhà phát triển 
-```
-
-# 4. Chạy hệ thống và cài đặt các ứng dụng cần thiết
-
-Người sử dụng truy cập theo đường dẫn _http://localhost:8069/_ để đăng nhập vào hệ thống.
-
-Hoàn tất
-    

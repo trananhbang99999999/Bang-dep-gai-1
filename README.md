@@ -1,4 +1,3 @@
-
 <h2 align="center">
     <a href="https://dainam.edu.vn/vi/khoa-cong-nghe-thong-tin">
     🎓 Faculty of Information Technology (DaiNam University)
@@ -10,9 +9,9 @@
 </h2>
 <div align="center">
     <p align="center">
-        <img src="./images/aiotlab_logo.png" alt="AIoTLab Logo" width="170"/>
-        <img src="./images/fitdnu_logo.png" alt="AIoTLab Logo" width="180"/>
-        <img src="./images/dnu_logo.png" alt="DaiNam University Logo" width="200"/>
+        <img src="images/aiotlab_logo.png" alt="AIoTLab Logo" width="170"/>
+        <img src="images/fitdnu_logo.png" alt="AIoTLab Logo" width="180"/>
+        <img src="images/dnu_logo.png" alt="DaiNam University Logo" width="200"/>
     </p>
 
 [![AIoTLab](https://img.shields.io/badge/AIoTLab-green?style=for-the-badge)](https://www.facebook.com/DNUAIoTLab)
@@ -28,13 +27,13 @@ Hệ thống Quản lý Nhân Sự, Công Việc và Khách Hàng được xây 
 - **Quản lý Công Việc (Projects)**: Lên kế hoạch, phân công công việc, theo dõi tiến độ, quản lý nhiệm vụ và báo cáo hiệu suất
 - **Quản lý Khách Hàng (CRM)**: Quản lý danh bạ khách hàng, cơ hội kinh doanh, bán hàng, tương tác khách hàng và phân tích dữ liệu
 
-Thay vì sử dụng các tệp Excel rời rạc hay hệ thống thủ công, giải pháp này mang lại một nền tảng tập trung, hiện đại, tự động hóa và dễ sử dụng cho toàn bộ quy trình quản lý doanh nghiệp。
+Thay vì sử dụng các tệp Excel rời rạc hay hệ thống thủ công, giải pháp này mang lại một nền tảng tập trung, hiện đại, tự động hóa và dễ sử dụng cho toàn bộ quy trình quản lý doanh nghiệp.
 
 ## 🔧 2. Các công nghệ được sử dụng
 <div align="center">
 
 ### Nền Tảng Chính
-[![Odoo](https://img.shields.io/badge/Odoo%2017-6C3696?style=for-the-badge&logo=odoo&logoColor=white)](https://www.odoo.com/)
+[![Odoo](https://img.shields.io/badge/Odoo%2015-6C3696?style=for-the-badge&logo=odoo&logoColor=white)](https://www.odoo.com/)
 [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 
 ### Công nghệ Backend
@@ -66,33 +65,30 @@ Thay vì sử dụng các tệp Excel rời rạc hay hệ thống thủ công, 
 - 🎓 Quản lý kỹ năng, đào tạo, phát triển nhân sự và sự nghiệp
 - 📊 Biểu đồ tổ chức, sơ đồ cấu trúc công ty và quản lý cấp độ quản lý
 - 🏅 Quản lý hiệu suất, đánh giá kỹ năng và phát triển năng lực
-- 👪 Quản lý thông tin gia đình, người phụ thuộc và sức khỏe
+- �‍👩‍👧‍👦 Quản lý thông tin gia đình, người phụ thuộc và sức khỏe
 
 ### 💼 Quản lý Công Việc (Projects Module)
-- 🧩 Tạo và quản lý dự án theo phương pháp agile hoặc waterfall
+- � Tạo và quản lý dự án theo phương pháp agile hoặc waterfall
 - 📅 Lập kế hoạch dự án, phân công nhiệm vụ cho nhân viên
 - 🎯 Theo dõi tiến độ công việc, thời hạn hoàn thành
-- 👥 Phân công tài nguyên, quản lý thành viên dự án
+- � Phân công tài nguyên, quản lý thành viên dự án
 - ⏱️ Ghi nhận thời gian làm việc, báo cáo chi phí dự án
-- ✅ Kiểm soát chất lượng, quản lý rủi ro và vấn đề dự án
+- � Kiểm soát chất lượng, quản lý rủi ro và vấn đề dự án
 - 📈 Báo cáo tiến độ, phân tích năng suất và hiệu quả dự án
-- 🏁 Theo dõi các mục tiêu, cột mốc và giai đoạn dự án
+- � Theo dõi các mục tiêu, cột mốc và giai đoạn dự án
 
 ### 👥 Quản lý Khách Hàng (CRM Module)
 - 💼 Quản lý danh bạ khách hàng (công ty, liên hệ cá nhân)
-- 📇 Lưu trữ thông tin liên lạc, lịch sử tương tác khách hàng
+- � Lưu trữ thông tin liên lạc, lịch sử tương tác khách hàng
 - 🎯 Quản lý cơ hội kinh doanh, bán hàng và quy trình bán hàng
-- ✉️ Quản lý email, cuộc gọi, cuộc họp và sự kiện khách hàng
-- 🔍 Phân loại khách hàng, phân tích tiềm năng và giá trị
+- � Quản lý email, cuộc gọi, cuộc họp và sự kiện khách hàng
+- � Phân loại khách hàng, phân tích tiềm năng và giá trị
 - 📈 Báo cáo doanh số, phân tích xu hướng bán hàng
 - 🎁 Quản lý khuyến mãi, chiến dịch bán hàng và chương trình khách hàng trung thành
-- 🗂️ Quản lý hoạt động, nhiệm vụ liên quan đến khách hàng
+- � Quản lý hoạt động, nhiệm vụ liên quan đến khách hàng
 - 🔔 Thông báo, nhắc nhở và tự động hóa quy trình CRM
 
-
-## ⚙️ 4. Cài đặt và Chạy Hệ Thống
-
-## 🖼️ 5. Giao diện chính (Screenshots)
+## 🖼️ 4. Giao diện chính (Screenshots)
 <div align="center">
 
 ![Giao diện Nhân sự](./images/nhan_su.png)
@@ -103,7 +99,11 @@ Thay vì sử dụng các tệp Excel rời rạc hay hệ thống thủ công, 
 
 </div>
 
-### 4.1. Yêu cầu hệ thống
+## ⚙️ 5. Cài đặt và Chạy Hệ Thống
+
+
+
+### 5.1. Yêu cầu hệ thống
 
 - **Python 3.10+** 
 - **PostgreSQL 12+**
@@ -111,7 +111,7 @@ Thay vì sử dụng các tệp Excel rời rạc hay hệ thống thủ công, 
 - **Git**
 - **Ít nhất 4GB RAM**, 10GB dung lượng ổ cứng
 
-### 4.2. Cài đặt sử dụng Docker (Khuyến nghị)
+### 5.2. Cài đặt sử dụng Docker (Khuyến nghị)
 
 **Bước 1**: Clone project
 ```bash
@@ -133,7 +133,7 @@ docker-compose up -d
 - Mở trình duyệt: `http://localhost:8069`
 
 
-### 4.3. Cài đặt trên máy chủ Linux (Ubuntu/Debian)
+### 5.3. Cài đặt trên máy chủ Linux (Ubuntu/Debian)
 
 **Bước 1**: Cập nhật hệ thống
 ```bash
@@ -193,7 +193,7 @@ python3 odoo-bin.py -c odoo.conf
 - Mở trình duyệt: `http://localhost:8069`
 - Tài khoản mặc định: `admin` / `admin`
 
-### 4.4. Cài đặt trên Windows
+### 5.4. Cài đặt trên Windows
 
 **Bước 1**: Cài đặt Python 3.10+
 - Tải từ https://www.python.org/downloads/
@@ -212,7 +212,7 @@ cd odoo-fitdnu
 **Bước 4**: Tạo virtual environment
 ```bash
 python -m venv venv
-venv\\Scripts\\activate
+venv\Scripts\activate
 ```
 
 **Bước 5**: Cài đặt dependencies

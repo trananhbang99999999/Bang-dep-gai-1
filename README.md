@@ -62,33 +62,23 @@ Thay vì sử dụng các tệp Excel rời rạc hay hệ thống thủ công, 
 - 👥 Quản lý thông tin nhân viên chi tiết (thông tin cá nhân, liên lạc, hợp đồng)
 - 🏢 Tổ chức cấu trúc công ty (phòng ban, chức vụ, quản lý cấp bậc)
 - 📋 Quản lý hợp đồng lao động, tuyển dụng và onboarding nhân viên
-- 🎓 Quản lý kỹ năng, đào tạo, phát triển nhân sự và sự nghiệp
-- 📊 Biểu đồ tổ chức, sơ đồ cấu trúc công ty và quản lý cấp độ quản lý
-- 🏅 Quản lý hiệu suất, đánh giá kỹ năng và phát triển năng lực
-- �‍👩‍👧‍👦 Quản lý thông tin gia đình, người phụ thuộc và sức khỏe
-
 ### 💼 Quản lý Công Việc (Projects Module)
-- � Tạo và quản lý dự án theo phương pháp agile hoặc waterfall
+- � Tạo và quản lý dự án
 - 📅 Lập kế hoạch dự án, phân công nhiệm vụ cho nhân viên
 - 🎯 Theo dõi tiến độ công việc, thời hạn hoàn thành
 - � Phân công tài nguyên, quản lý thành viên dự án
 - ⏱️ Ghi nhận thời gian làm việc, báo cáo chi phí dự án
-- � Kiểm soát chất lượng, quản lý rủi ro và vấn đề dự án
 - 📈 Báo cáo tiến độ, phân tích năng suất và hiệu quả dự án
-- � Theo dõi các mục tiêu, cột mốc và giai đoạn dự án
+
 
 ### 👥 Quản lý Khách Hàng (CRM Module)
 - 💼 Quản lý danh bạ khách hàng (công ty, liên hệ cá nhân)
 - � Lưu trữ thông tin liên lạc, lịch sử tương tác khách hàng
 - 🎯 Quản lý cơ hội kinh doanh, bán hàng và quy trình bán hàng
 - � Quản lý email, cuộc gọi, cuộc họp và sự kiện khách hàng
-- � Phân loại khách hàng, phân tích tiềm năng và giá trị
-- 📈 Báo cáo doanh số, phân tích xu hướng bán hàng
-- 🎁 Quản lý khuyến mãi, chiến dịch bán hàng và chương trình khách hàng trung thành
 - � Quản lý hoạt động, nhiệm vụ liên quan đến khách hàng
-- 🔔 Thông báo, nhắc nhở và tự động hóa quy trình CRM
 
-## 🖼️ 4. Giao diện chính (Screenshots)
+## 🖼️ 4. Giao diện chính
 <div align="center">
 
 ![Giao diện Nhân sự](./images/nhan_su.png)
@@ -235,7 +225,7 @@ python odoo-bin.py -c odoo.conf
 
 - **License**: [MIT/GPL/Commercial]
 - **Developed by**: Faculty of Information Technology, DaiNam University
-- **Built with**: [Odoo](https://odoo.com), [Groq](https://groq.com)
+- **Built with**: [Odoo](https://odoo.com)
 
 <div align="center">
 

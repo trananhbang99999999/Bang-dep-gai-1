@@ -277,6 +277,7 @@ class SalesTask(models.Model):
 
     def unlink(self):
         pts = self.mapped('project_task_id')
-        if pts:
+        # avoid recursion when unlink originates from project_task
+        if pts and not self._context.get('from_project_task'):
             pts.with_context(from_sales=True).unlink()
         return super().unlink()

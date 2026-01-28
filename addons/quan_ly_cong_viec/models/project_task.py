@@ -261,11 +261,20 @@ class ProjectTask(models.Model):
         return res
 
     def unlink(self):
-        # when a dashboard/project_task is removed, clear links on department tasks
+        # when a dashboard/project_task is removed, remove mirrored department tasks
+        # Use context to avoid recursion back to project_task.unlink
         dept_models = ['cskh_task', 'sales_task', 'marketing_task', 'ky_thuat_task']
         for rec in self:
             for m in dept_models:
-                tasks = self.env[m].search([('project_task_id', '=', rec.id)])
-                if tasks:
-                    tasks.with_context(from_project_task=True).write({'project_task_id': False})
+                try:
+                    tasks = self.env[m].search([('project_task_id', '=', rec.id)])
+                    if tasks:
+                        tasks.with_context(from_project_task=True).unlink()
+                except Exception:
+                    # fallback: clear the link if unlink fails for safety
+                    try:
+                        tasks.with_context(from_project_task=True).write({'project_task_id': False})
+                    except Exception:
+                        pass
         return super().unlink()
+

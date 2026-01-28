@@ -6,6 +6,20 @@ import logging
 
 _logger = logging.getLogger(__name__)
 
+# Tier thresholds (currency = VND)
+# Use these constants to keep tier logic centralized and clear.
+TIER_AMOUNTS = {
+    'platinum': 500_000_000,
+    'gold': 200_000_000,
+    'silver': 50_000_000,
+}
+
+TIER_ORDER_COUNTS = {
+    'platinum': 50,
+    'gold': 20,
+    'silver': 5,
+}
+
 class Customer(models.Model):
     _name = 'customer'
     _description = 'Bảng chứa thông tin khách hàng'
@@ -69,10 +83,10 @@ class Customer(models.Model):
     # Loyalty and tier
     loyalty_points = fields.Integer("Điểm thành viên", default=0, store=True)
     customer_tier = fields.Selection([
-        ('bronze', 'Bronze'),
-        ('silver', 'Silver'),
-        ('gold', 'Gold'),
-        ('platinum', 'Platinum'),
+        ('bronze', 'Đồng'),
+        ('silver', 'Bạc'),
+        ('gold', 'Vàng'),
+        ('platinum', 'Bạch kim'),
     ], string="Hạng khách hàng", compute="_compute_customer_tier", store=True)
     recent_interactions = fields.Integer("Số tương tác trong tháng", compute="_compute_recent_interactions", store=True)
 
@@ -162,20 +176,18 @@ class Customer(models.Model):
     def _compute_customer_tier(self):
         """Compute customer tier based on thresholds.
 
-        Rules (default):
-        - Platinum: total_amount >= 500_000_000 or total_sale_orders >= 50
-        - Gold: total_amount >= 200_000_000 or total_sale_orders >= 20
-        - Silver: total_amount >= 50_000_000 or total_sale_orders >= 5
-        - Bronze: otherwise
+        Rules (default): thresholds are defined in the module-level
+        dictionaries `TIER_AMOUNTS` (VND) and `TIER_ORDER_COUNTS`.
         """
         for record in self:
-            amt = record.total_amount or 0.0
-            orders = record.total_sale_orders or 0
-            if amt >= 5000000 or orders >= 50:
+            amt = float(record.total_amount or 0.0)
+            orders = int(record.total_sale_orders or 0)
+
+            if amt >= TIER_AMOUNTS['platinum'] or orders >= TIER_ORDER_COUNTS['platinum']:
                 record.customer_tier = 'platinum'
-            elif amt >= 200000 or orders >= 20:
+            elif amt >= TIER_AMOUNTS['gold'] or orders >= TIER_ORDER_COUNTS['gold']:
                 record.customer_tier = 'gold'
-            elif amt >= 50000 or orders >= 5:
+            elif amt >= TIER_AMOUNTS['silver'] or orders >= TIER_ORDER_COUNTS['silver']:
                 record.customer_tier = 'silver'
             else:
                 record.customer_tier = 'bronze'
